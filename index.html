@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalMart — Small Vendor Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <h1>LocalMart</h1>
+      <span>Fresh from nearby small vendors</span>
+    </div>
+    <div class="nav-actions">
+      <input type="text" id="searchInput" placeholder="Search items or vendor..." />
+      <button id="cartBtn" class="btn primary">Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Vendor form to add a new product -->
+    <section class="card vendor-box">
+      <h2>Vendor Panel — Add Product</h2>
+      <form id="vendorForm" class="vendor-grid">
+        <input type="text" id="prodName" placeholder="Product name (e.g., Organic Honey)" required />
+        <input type="text" id="vendorName" placeholder="Vendor / Shop name" required />
+        <select id="prodCategory">
+          <option value="Groceries">Groceries</option>
+          <option value="Handmade">Handmade</option>
+          <option value="Bakery">Bakery</option>
+          <option value="Dairy">Dairy</option>
+        </select>
+        <input type="number" id="prodPrice" placeholder="Price (₹)" min="1" required />
+        <input type="number" id="prodStock" placeholder="Stock qty" min="1" required />
+        <button type="submit" class="btn">Add to Store</button>
+      </form>
+    </section>
+
+    <!-- Category filters -->
+    <div class="filters" id="categoryFilters">
+      <button class="chip active" data-cat="All">All</button>
+      <button class="chip" data-cat="Groceries">Groceries</button>
+      <button class="chip" data-cat="Handmade">Handmade</button>
+      <button class="chip" data-cat="Bakery">Bakery</button>
+      <button class="chip" data-cat="Dairy">Dairy</button>
+    </div>
+
+    <!-- Product listings -->
+    <section id="productGrid" class="product-grid"></section>
+  </main>
+
+  <!-- Simple Cart Modal / Drawer -->
+  <aside id="cartDrawer" class="cart-drawer hidden">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" class="close-btn">×</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-footer">
+      <p>Total: <strong>₹<span id="cartTotal">0</span></strong></p>
+      <button id="checkoutBtn" class="btn primary full-width">Place Order</button>
+      <p id="orderMsg" class="order-msg"></p>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
